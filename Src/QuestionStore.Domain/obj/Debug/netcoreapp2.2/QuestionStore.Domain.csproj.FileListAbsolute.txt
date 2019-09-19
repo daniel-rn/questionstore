@@ -1,0 +1,13 @@
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.deps.json
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.dll
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.pdb
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Core.dll
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\FirebirdSql.Data.FirebirdClient.dll
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Core.pdb
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csprojAssemblyReference.cache
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csproj.CoreCompileInputs.cache
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.AssemblyInfoInputs.cache
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.AssemblyInfo.cs
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csproj.CopyComplete
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.dll
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.pdb
