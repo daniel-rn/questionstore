@@ -10,7 +10,28 @@ namespace QuestionStore.Core.Processos
         public void Obtenha()
         {
             var map = new MapperQuestion();
-            var q = map.obtenhaQuestoes();
+            var q = map.Obtenha();
         }
+
+        public bool Insert(CommandInsertQuestion commandInsertQuestion)
+        {
+            var map = new MapperQuestion();
+            var response = map.Insert(commandInsertQuestion);
+
+            return response;
+        }
+
+        public bool Delete()
+        {
+
+            return false;
+        }
+
+        public bool Update()
+        {
+
+            return false;
+        }
+
     }
 }

@@ -8,3 +8,4 @@ C:\WorkNascimento\QuestionStore\Src\QuestionStore.Core\obj\Debug\netcoreapp2.2\Q
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Core\obj\Debug\netcoreapp2.2\QuestionStore.Core.pdb
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Core\bin\Debug\netcoreapp2.2\FirebirdSql.Data.FirebirdClient.dll
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Core\obj\Debug\netcoreapp2.2\QuestionStore.Core.csproj.CopyComplete
+C:\WorkNascimento\QuestionStore\Src\QuestionStore.Core\obj\Debug\netcoreapp2.2\QuestionStore.Core.csprojAssemblyReference.cache
