@@ -18,10 +18,7 @@ namespace QuestionStore.WebApp.MVC.Controllers
 
             sv.Obtenha();
 
-           
-
             return View();
-            
         }
 
         public IActionResult Privacy()

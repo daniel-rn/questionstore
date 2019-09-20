@@ -8,10 +8,16 @@
     ".NETCoreApp,Version=v2.2": {
       "QuestionStore.Core/1.0.0": {
         "dependencies": {
+          "QuestionStore.Domain": "1.0.0",
           "FirebirdSql.Data.FirebirdClient": "6.4.0.0"
         },
         "runtime": {
           "QuestionStore.Core.dll": {}
+        }
+      },
+      "QuestionStore.Domain/1.0.0": {
+        "runtime": {
+          "QuestionStore.Domain.dll": {}
         }
       },
       "FirebirdSql.Data.FirebirdClient/6.4.0.0": {
@@ -26,6 +32,11 @@
   },
   "libraries": {
     "QuestionStore.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "QuestionStore.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

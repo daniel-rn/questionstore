@@ -207,6 +207,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "QuestionStore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/QuestionStore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuestionStore.Domain.dll": {}
+        }
       }
     }
   },
@@ -678,11 +688,17 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "QuestionStore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../QuestionStore.Domain/QuestionStore.Domain.csproj",
+      "msbuildProject": "../QuestionStore.Domain/QuestionStore.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "QuestionStore.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -692,11 +708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj",
+      "projectUniqueName": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj",
       "projectName": "QuestionStore.Core",
-      "projectPath": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj",
+      "projectPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj",
       "packagesPath": "C:\\Users\\Nascimento\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.Core\\obj\\",
+      "outputPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -714,7 +730,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Domain\\QuestionStore.Domain.csproj": {
+              "projectPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Domain\\QuestionStore.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

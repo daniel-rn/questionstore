@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuestionStore.Domain\QuestionStore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>..\..\..\em\Binarios\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>

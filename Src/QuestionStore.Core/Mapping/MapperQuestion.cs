@@ -1,4 +1,5 @@
 ﻿using ControleFamiliar.Mapeadores;
+using QuestionStore.Domain.Domain;
 using System;
 
 namespace QuestionStore.Core.Mapping
@@ -54,18 +55,18 @@ namespace QuestionStore.Core.Mapping
         }
     }
 
-    public class Question
-    {
-        public Question()
-        {
-            Guid = Guid.NewGuid();
-        }
+    //public class Question
+    //{
+    //    public Question()
+    //    {
+    //        Guid = Guid.NewGuid();
+    //    }
 
-        public Guid Guid { get; }
+    //    public Guid Guid { get; }
 
-        public string Id { get; set; }
+    //    public string Id { get; set; }
 
-        public string Description { get; set; }
-    }
+    //    public string Description { get; set; }
+    //}
 }
 

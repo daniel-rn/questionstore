@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace QuestionStore.Core.Data
+namespace QuestionStore.Domain
 {
     public abstract class Entity
     {
         protected Entity()
         {
-            Id = Guid.NewGuid();
+            Guid = Guid.NewGuid();
         }
 
-        public Guid Id { get; set; }
+        protected Guid Guid { get; set; }
     }
 }

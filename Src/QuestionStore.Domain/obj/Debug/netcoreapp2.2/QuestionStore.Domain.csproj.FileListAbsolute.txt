@@ -11,3 +11,12 @@ C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csproj.CopyComplete
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.dll
 C:\WorkNascimento\QuestionStore\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.pdb
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.deps.json
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.dll
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\bin\Debug\netcoreapp2.2\QuestionStore.Domain.pdb
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csprojAssemblyReference.cache
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.csproj.CoreCompileInputs.cache
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.AssemblyInfoInputs.cache
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.AssemblyInfo.cs
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.dll
+C:\WorkNascimento\Qs\Src\QuestionStore.Domain\obj\Debug\netcoreapp2.2\QuestionStore.Domain.pdb

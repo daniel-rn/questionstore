@@ -4442,11 +4442,24 @@
       "QuestionStore.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "QuestionStore.Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/QuestionStore.Core.dll": {}
         },
         "runtime": {
           "bin/placeholder/QuestionStore.Core.dll": {}
+        }
+      },
+      "QuestionStore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/QuestionStore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuestionStore.Domain.dll": {}
         }
       }
     }
@@ -12083,6 +12096,11 @@
       "type": "project",
       "path": "../QuestionStore.Core/QuestionStore.Core.csproj",
       "msbuildProject": "../QuestionStore.Core/QuestionStore.Core.csproj"
+    },
+    "QuestionStore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../QuestionStore.Domain/QuestionStore.Domain.csproj",
+      "msbuildProject": "../QuestionStore.Domain/QuestionStore.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12100,11 +12118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.WebApp.MVC\\QuestionStore.WebApp.MVC.csproj",
+      "projectUniqueName": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.WebApp.MVC\\QuestionStore.WebApp.MVC.csproj",
       "projectName": "QuestionStore.WebApp.MVC",
-      "projectPath": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.WebApp.MVC\\QuestionStore.WebApp.MVC.csproj",
+      "projectPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.WebApp.MVC\\QuestionStore.WebApp.MVC.csproj",
       "packagesPath": "C:\\Users\\Nascimento\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.WebApp.MVC\\obj\\",
+      "outputPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.WebApp.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12123,8 +12141,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj": {
-              "projectPath": "C:\\WorkNascimento\\QuestionStore\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj"
+            "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj": {
+              "projectPath": "C:\\WorkNascimento\\Qs\\Src\\QuestionStore.Core\\QuestionStore.Core.csproj"
             }
           }
         }

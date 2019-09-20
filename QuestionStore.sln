@@ -10,8 +10,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-WebApp", "3-WebApp", "{F9B09B11-DDCB-455F-8D51-4EF581F55514}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.Core", "Src\QuestionStore.Core\QuestionStore.Core.csproj", "{A91F5169-52A1-4EE1-8EA0-2C0AC4FCA925}"
+	ProjectSection(ProjectDependencies) = postProject
+		{035319EF-16DD-4B91-B70F-97D92E8568A2} = {035319EF-16DD-4B91-B70F-97D92E8568A2}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.WebApp.MVC", "Src\QuestionStore.WebApp.MVC\QuestionStore.WebApp.MVC.csproj", "{7778C041-1E5A-4C3D-A46C-7D1A461CEE2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{035319EF-16DD-4B91-B70F-97D92E8568A2} = {035319EF-16DD-4B91-B70F-97D92E8568A2}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.Domain", "Src\QuestionStore.Domain\QuestionStore.Domain.csproj", "{035319EF-16DD-4B91-B70F-97D92E8568A2}"
 EndProject
