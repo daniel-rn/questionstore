@@ -23,7 +23,7 @@ namespace QuestionStore.WebApp.MVC.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("CadastroParticipante");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
