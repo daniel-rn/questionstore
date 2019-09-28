@@ -10,5 +10,10 @@ namespace QuestionStore.Domain.Domain
 
         public List<Alternativas> Alternativas { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"ID: {Id} - Pergunta :{Description}";    
+        }
     }
 }

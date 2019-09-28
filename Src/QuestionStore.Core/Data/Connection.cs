@@ -7,6 +7,8 @@ namespace ControleFamiliar.Mapeadores
     {
         public static FbConnection FbCnn { get; private set; }
 
+        public static FbTransaction FbTxx { get; private set; }
+
         public static FbCommandBuilder FbCmm { get; } = new FbCommandBuilder();
 
         public static bool Active(bool bActive)
@@ -33,9 +35,25 @@ namespace ControleFamiliar.Mapeadores
         public static FbTransaction ObtenhaFbTransaction()
         {
             Active(true);
-            return FbCnn.BeginTransaction();
+            FbTxx = FbCnn.BeginTransaction();
+            return FbTxx;
         }
 
-        public static DbCommand ObtehaComando(string sql) => new FbCommand(sql, FbCnn);
+        public static DbCommand ObtenhaComando(string sql)
+        {
+            return new FbCommand(sql, FbCnn);
+        }
+
+        public static DbCommand ObtenhaComando()
+        {
+            var cmd = new FbCommand
+            {
+                Connection = FbCnn,
+                Transaction = FbTxx
+            };
+
+            return cmd;
+        }
+
     }
 }

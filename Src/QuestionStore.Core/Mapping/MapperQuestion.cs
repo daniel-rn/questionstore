@@ -1,41 +1,42 @@
 ﻿using ControleFamiliar.Mapeadores;
 using QuestionStore.Domain.Domain;
-using System;
+using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping
 {
     public class MapperQuestion
     {
-        public Question Obtenha()
+        public List<Question> Obtenha()
         {
-            var question = new Question();
-
+            var questionList = new List<Question>();
             using (var transacao = Connection.ObtenhaFbTransaction())
+            using (var cmd = Connection.ObtenhaComando())
             {
-                var comando = Connection.ObtehaComando($"SELECT * FROM QUESTION");
-                comando.Transaction = transacao;
-                var dr = comando.ExecuteReader();
+                cmd.CommandText = $"SELECT * FROM QUESTION";
 
-                while (dr.Read())
+                using (var dr = cmd.ExecuteReader())
                 {
-                    question = new Question()
+                    while (dr.Read())
                     {
-                        Description = dr.GetValue(1).ToString(),
-                        Id = dr.GetValue(2).ToString()
-                    };
+                        questionList.Add(new Question()
+                        {
+                            Description = dr.GetValue(1).ToString(),
+                            Id = dr.GetValue(2).ToString()
+                        });
+                    }
                 }
             }
 
-            return question;
+            return questionList;
         }
 
         public bool Insert(CommandInsertQuestion commandInsertQuestion)
         {
             using (var transacao = Connection.ObtenhaFbTransaction())
             {
-                var comando = Connection.ObtehaComando($"SELECT * FROM QUESTION");
-                comando.Transaction = transacao;
-                var dr = comando.ExecuteReader();
+                //var comando = Connection.ObtehaComando($"SELECT * FROM QUESTION");
+                //comando.Transaction = transacao;
+                //var dr = comando.ExecuteReader();
 
             }
 

@@ -1,4 +1,5 @@
 ﻿using QuestionStore.Core.Mapping;
+using QuestionStore.Domain.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,12 @@ namespace QuestionStore.Core.Processos
 {
     public class ServicoCadastroQuestao
     {
-        public void Obtenha()
+        public List<Question> Obtenha()
         {
             var map = new MapperQuestion();
             var q = map.Obtenha();
+
+            return q;
         }
 
         public bool Insert(CommandInsertQuestion commandInsertQuestion)
