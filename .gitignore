@@ -16,6 +16,8 @@ packages/
 /src/QuestionStore.WebApp.MVC/obj/*
 /src/QuestionStore.Domain/obj/*
 /src/QuestionStore.Core/obj/*
+/src/QuestionStore.WebApp.API/bin/*
+/src/QuestionStore.WebApp.API/obj/*
 
 ./src/
 
