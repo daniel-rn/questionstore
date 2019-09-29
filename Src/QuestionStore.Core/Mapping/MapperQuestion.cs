@@ -47,39 +47,6 @@ INNER JOIN ALTERNATIVE ON ALTQSID = QSID";
 
             return questionList.Select(c => c.Value).ToList();
         }
-
-        public bool Insert(CommandInsertQuestion commandInsertQuestion)
-        {
-
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            using (var cmd = Connection.ObtenhaComando())
-            {
-
-            }
-
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            {
-                //var comando = Connection.ObtehaComando($"SELECT * FROM QUESTION");
-                //comando.Transaction = transacao;
-                //var dr = comando.ExecuteReader();
-
-            }
-
-            return false;
-        }
-
-        public bool Delete()
-        {
-
-            return false;
-        }
-
-        public bool Update()
-        {
-
-            return false;
-        }
     }
-
 }
 
