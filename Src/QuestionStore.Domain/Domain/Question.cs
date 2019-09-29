@@ -8,7 +8,7 @@ namespace QuestionStore.Domain.Domain
 
         public string Id { get; set; }
 
-        public List<Alternativas> Alternativas { get; set; }
+        public List<Alternativa> Alternativas { get; set; } = new List<Alternativa>();
 
 
         public override string ToString()

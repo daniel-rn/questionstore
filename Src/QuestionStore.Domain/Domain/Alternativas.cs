@@ -1,6 +1,7 @@
 ﻿namespace QuestionStore.Domain.Domain
 {
-    public class Alternativas : Entity
+
+    public class Alternativa : Entity
     {
         public int Id { get; set; }
 
