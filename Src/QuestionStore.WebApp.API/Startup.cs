@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace QuestionStore.WebApp.API
 {
@@ -25,6 +19,14 @@ namespace QuestionStore.WebApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("myconfig", builder =>
+            //     {
+            //         builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+            //     });
+            //}
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +38,7 @@ namespace QuestionStore.WebApp.API
             }
 
             app.UseMvc();
+            app.UseCors("myconfig");
         }
     }
 }
