@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using QuestionStore.Core.Service;
+using QuestionStore.Domain.Domain;
 using QuestionStore.WebApp.API.Models;
 using System.Collections.Generic;
 
@@ -11,9 +13,12 @@ namespace QuestionStore.WebApp.API.Controllers
     {
         // GET api/answer
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var srv = new ServiceAnswer();
+            List<Answer> answers = srv.GetAllAnswers();
+
+            return JsonConvert.SerializeObject(answers);
         }
 
         // POST api/answer
