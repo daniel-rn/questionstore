@@ -11,7 +11,7 @@ namespace QuestionStore.Core.Service
         {
 
             var map = new MapperAnswer();
-            map.Insert();
+            map.Insert(insertAnswer);
         }
     }
 }

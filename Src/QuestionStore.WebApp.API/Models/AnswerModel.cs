@@ -2,7 +2,7 @@
 {
     public class AnswerModel
     {
-        public int IdQuestion { get; set; }
+        public string IdQuestion { get; set; }
 
         public string Letra { get; set; }
     }
