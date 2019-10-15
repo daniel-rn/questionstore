@@ -19,14 +19,7 @@ namespace QuestionStore.WebApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("myconfig", builder =>
-            //     {
-            //         builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
-            //     });
-            //}
-            //);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +30,11 @@ namespace QuestionStore.WebApp.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(option => option.AllowAnyHeader()
+            .AllowAnyOrigin()
+            .AllowAnyOrigin());
+
             app.UseMvc();
-            app.UseCors("myconfig");
         }
     }
 }
