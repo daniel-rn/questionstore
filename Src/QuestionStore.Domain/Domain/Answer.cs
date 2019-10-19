@@ -2,7 +2,7 @@
 {
     public class Answer : Entity
     {
-        public string IdQuestion { get; set; }
-        public string Letra { get; set; }
+        public string Question { get; set; }
+        public string Resposta { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace QuestionStore.Core.Mapping
             using (var cmd = Connection.ObtenhaComando())
             {
                 var ultimoCodigo = ObtenhaUltimoCodigo();
-                cmd.CommandText = $@"INSERT INTO ANSWER (ANSCODIGO, ANSQSID, ANSLETRA) VALUES ('{ultimoCodigo}', '{insertAnswer.IdQuestion}', '{insertAnswer.Letra}');";
+                cmd.CommandText = $@"INSERT INTO ANSWER (ANSCODIGO, ANSQSID, ANSLETRA) VALUES ('{ultimoCodigo}', '{insertAnswer.IdQuestion}', '{insertAnswer.IdAnswer}');";
                 cmd.ExecuteNonQuery();
 
                 transacao.Commit();
@@ -41,8 +41,8 @@ namespace QuestionStore.Core.Mapping
                     {
                         answerList.Add(new Answer
                         {
-                            IdQuestion = dr.GetValue(0).ToString(),
-                            Letra = dr.GetValue(1).ToString()
+                            Question = dr.GetValue(0).ToString(),
+                            Resposta = dr.GetValue(1).ToString()
                         });
                     }
                 }
@@ -61,6 +61,8 @@ namespace QuestionStore.Core.Mapping
                 {
                     while (dr.Read())
                     {
+                        if (dr.IsDBNull(0)) return 1;
+
                         return Convert.ToInt32(dr.GetValue(0)) + 1;
                     }
 

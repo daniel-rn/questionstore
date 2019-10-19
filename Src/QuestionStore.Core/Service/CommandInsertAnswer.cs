@@ -4,6 +4,6 @@
     {
         public string IdQuestion { get; set; }
 
-        public string Letra { get; set; }
+        public string IdAnswer { get; set; }
     }
 }

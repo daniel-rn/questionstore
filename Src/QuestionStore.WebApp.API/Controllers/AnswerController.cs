@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using QuestionStore.Core.Service;
 using QuestionStore.Domain.Domain;
-using QuestionStore.WebApp.API.Models;
 using System.Collections.Generic;
 
 namespace QuestionStore.WebApp.API.Controllers
@@ -23,16 +22,22 @@ namespace QuestionStore.WebApp.API.Controllers
 
         // POST api/answer
         [HttpPost]
-        public void Post([FromBody] AnswerModel value)
+        public void Post([FromBody] dynamic value)
         {
-            var command = new CommandInsertAnswer
-            {
-                IdQuestion = value.IdQuestion,
-                Letra = value.Letra
-            };
-
+            var itens = value as Newtonsoft.Json.Linq.JObject;
             var svc = new ServiceAnswer();
-            svc.InsertAnswer(command);
+
+            foreach (var item in itens)
+            {
+                var command = new CommandInsertAnswer
+                {
+                    IdQuestion = item.Key.ToString(),
+                    IdAnswer = item.Value.ToString()
+                };
+
+                svc.InsertAnswer(command);
+            }
         }
+
     }
 }
