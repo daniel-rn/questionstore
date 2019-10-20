@@ -1,4 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using System;
 using System.Data.Common;
 
 namespace ControleFamiliar.Mapeadores
@@ -55,5 +56,9 @@ namespace ControleFamiliar.Mapeadores
             return cmd;
         }
 
+        public static void Close()
+        {
+            Active(false);
+        }
     }
 }

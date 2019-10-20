@@ -43,6 +43,8 @@ INNER JOIN ALTERNATIVE ON ALTQSID = QSID";
                         });
                     }
                 }
+
+                transacao.Connection.Close();
             }
 
             return questionList.Select(c => c.Value).ToList();

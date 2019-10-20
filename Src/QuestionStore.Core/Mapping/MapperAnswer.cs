@@ -22,6 +22,7 @@ namespace QuestionStore.Core.Mapping
                 cmd.ExecuteNonQuery();
 
                 transacao.Commit();
+                transacao.Connection.Close();
             }
 
         }
@@ -46,6 +47,8 @@ namespace QuestionStore.Core.Mapping
                         });
                     }
                 }
+
+                transacao.Connection.Close();
             }
 
             return answerList;
@@ -67,6 +70,8 @@ namespace QuestionStore.Core.Mapping
                     }
 
                 }
+
+                transacao.Connection.Close();
             }
 
             return 0;
