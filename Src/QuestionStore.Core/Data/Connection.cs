@@ -56,9 +56,5 @@ namespace ControleFamiliar.Mapeadores
             return cmd;
         }
 
-        public static void Close()
-        {
-            Active(false);
-        }
     }
 }
