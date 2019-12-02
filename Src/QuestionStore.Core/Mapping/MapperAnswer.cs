@@ -12,7 +12,7 @@ namespace QuestionStore.Core.Mapping
         {
         }
 
-        public void Insert(CommandInsertAnswer insertAnswer)
+        public void Insert(InsertAnswerCommand insertAnswer)
         {
             using (var transacao = Connection.ObtenhaFbTransaction())
             using (var cmd = Connection.ObtenhaComando())

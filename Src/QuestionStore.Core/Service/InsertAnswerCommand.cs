@@ -1,6 +1,6 @@
 ﻿namespace QuestionStore.Core.Service
 {
-    public class CommandInsertAnswer
+    public class InsertAnswerCommand
     {
         public string IdQuestion { get; set; }
 

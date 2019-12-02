@@ -7,9 +7,9 @@ namespace QuestionStore.WebApp.MVC.Models
 {
     public class CadastroParticipanteModel
     {
-        public int QuestaoId { get; set; }
+        public int Id { get; set; }
 
-        public string NomeDoParticipante { get; set; } = "seu saraiva";
+        public string Nome { get; set; } = "seu saraiva";
 
         public int Idade { get; set; }
     }

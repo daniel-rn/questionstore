@@ -2,12 +2,11 @@
 
 namespace QuestionStore.WebApp.MVC.Controllers
 {
-    internal class CadastroParticipanteValidador : FluentValidation.Validators, IValidador
+    internal class CadastroParticipanteValidador 
     {
         private readonly CadastroParticipanteModel _cadastroParticipanteModel;
 
         public CadastroParticipanteValidador(CadastroParticipanteModel model) 
-            : base(model)
         {
             _cadastroParticipanteModel = model;
         }

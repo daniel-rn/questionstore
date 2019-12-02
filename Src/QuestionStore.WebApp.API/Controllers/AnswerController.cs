@@ -29,7 +29,7 @@ namespace QuestionStore.WebApp.API.Controllers
 
             foreach (var item in itens)
             {
-                var command = new CommandInsertAnswer
+                var command = new InsertAnswerCommand
                 {
                     IdQuestion = item.Key.ToString(),
                     IdAnswer = item.Value.ToString()

@@ -8,7 +8,7 @@ namespace QuestionStore.Core.Service
 {
     public class ServiceAnswer : IServiceAnswer
     {
-        public void InsertAnswer(CommandInsertAnswer insertAnswer)
+        public void InsertAnswer(InsertAnswerCommand insertAnswer)
         {
 
             var map = new MapperAnswer();
