@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.MVC.Models
 {
-    public class QuestionModel
+    public class CadastroParticipanteModel
     {
         public int QuestaoId { get; set; }
 

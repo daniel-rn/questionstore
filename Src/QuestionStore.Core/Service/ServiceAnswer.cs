@@ -6,7 +6,7 @@ using System.Text;
 
 namespace QuestionStore.Core.Service
 {
-    public class ServiceAnswer
+    public class ServiceAnswer : IServiceAnswer
     {
         public void InsertAnswer(CommandInsertAnswer insertAnswer)
         {
@@ -20,5 +20,9 @@ namespace QuestionStore.Core.Service
             var map = new MapperAnswer();
             return map.GetAllAnswers();
         }
+    }
+
+    public interface IServiceAnswer
+    {
     }
 }

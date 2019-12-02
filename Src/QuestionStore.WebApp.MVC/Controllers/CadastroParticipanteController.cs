@@ -18,9 +18,9 @@ namespace QuestionStore.WebApp.MVC.Controllers
             return View("CadastroParticipante");
         }
 
-        public IActionResult FormularioContato(QuestionModel model)
+        public IActionResult FormularioContato(CadastroParticipanteModel model)
         {
-            var x = "x";
+            var validador = new CadastroParticipanteValidador(model);
 
             return null;
         }

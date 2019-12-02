@@ -1,4 +1,4 @@
-﻿@model QuestionModel
+﻿@model CadastroParticipanteModel
 @{
     ViewData["Title"] = "Cadastro de Participante";
 }
@@ -8,11 +8,11 @@
 <hr />
 <form asp-action="FormularioContato" asp-anti-forgery="true" method="post">
     <div class="form-group">
-        <label asp-for="NomeDoParticipante"></label>
+        <label asp-for="NomeDoParticipante">Nome</label>
         <input asp-for="NomeDoParticipante" class="form-control" placeholder="Informe o nome" />
     </div>
     <div class="form-group">
-        <label asp-for="Idade"></label>
+        <label asp-for="Idade">Idade</label>
         <input asp-for="Idade" class="form-control" placeholder="Informe a idade" />
     </div>
     <input type="submit" value="Salvar Informação" class="btn btn-primary" />
