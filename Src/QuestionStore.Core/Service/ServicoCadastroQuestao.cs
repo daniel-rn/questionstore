@@ -8,7 +8,7 @@ namespace QuestionStore.Core.Processos
     {
         public List<Question> Obtenha()
         {
-            var map = new MapperQuestion();
+            var map = new QuestionMapper();
             var q = map.Obtenha();
 
             return q;

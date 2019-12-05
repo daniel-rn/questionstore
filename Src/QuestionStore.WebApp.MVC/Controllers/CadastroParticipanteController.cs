@@ -45,6 +45,8 @@ namespace QuestionStore.WebApp.MVC.Controllers
                 return View("Default", model);
             }
 
+            _serviceParticipante.Insert(participante);
+
             return View("Index");
         }
     }

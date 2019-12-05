@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace QuestionStore.Core.Mapping
 {
-    public class MapperQuestion
+    public class QuestionMapper
     {
         public List<Question> Obtenha()
         {

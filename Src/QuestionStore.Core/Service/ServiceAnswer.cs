@@ -11,13 +11,13 @@ namespace QuestionStore.Core.Service
         public void InsertAnswer(InsertAnswerCommand insertAnswer)
         {
 
-            var map = new MapperAnswer();
+            var map = new AnswerMapper();
             map.Insert(insertAnswer);
         }
 
         public List<Answer> GetAllAnswers()
         {
-            var map = new MapperAnswer();
+            var map = new AnswerMapper();
             return map.GetAllAnswers();
         }
     }

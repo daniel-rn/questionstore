@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping
 {
-    public class MapperAnswer
+    public class AnswerMapper
     {
-        public MapperAnswer()
+        public AnswerMapper()
         {
         }
 

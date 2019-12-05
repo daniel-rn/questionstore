@@ -1,4 +1,5 @@
-﻿using QuestionStore.Domain.Domain;
+﻿using QuestionStore.Core.Mapping;
+using QuestionStore.Domain.Domain;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,18 +17,22 @@ namespace QuestionStore.Core.Service
             //throw new NotImplementedException();
         }
 
-        public void Insert(Command command)
-        {
-            //throw new NotImplementedException(" erro qualquer");
-        }
+        
 
         public async Task<Participante> Consulte()
         {
-            Thread.Sleep(5000);
-
             return await Task.Run(() =>
             {
                 return new Participante() { Nome = "Nasa!" };
+            });
+        }
+
+        public async Task<bool> Insert(Command command)
+        {
+            return await Task.Run(() =>
+            {
+                new ParticipanteMapper().Insert(command);
+                return true;
             });
         }
     }
@@ -35,7 +40,7 @@ namespace QuestionStore.Core.Service
 
     public interface IServiceParticipante : IDisposable
     {
-        void Insert(Command command);
+        Task<bool> Insert(Command command);
 
         Task<Participante> Consulte();
     }
