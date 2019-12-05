@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.WebApp.API", 
 		{A91F5169-52A1-4EE1-8EA0-2C0AC4FCA925} = {A91F5169-52A1-4EE1-8EA0-2C0AC4FCA925}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionStore.Application", "QuestionStore.Application\QuestionStore.Application.csproj", "{C72BD1AC-A987-4772-A786-05174F05B483}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{4569642E-D10E-4C74-81E9-A68378F779BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4569642E-D10E-4C74-81E9-A68378F779BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4569642E-D10E-4C74-81E9-A68378F779BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72BD1AC-A987-4772-A786-05174F05B483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72BD1AC-A987-4772-A786-05174F05B483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72BD1AC-A987-4772-A786-05174F05B483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72BD1AC-A987-4772-A786-05174F05B483}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{7778C041-1E5A-4C3D-A46C-7D1A461CEE2B} = {F9B09B11-DDCB-455F-8D51-4EF581F55514}
 		{035319EF-16DD-4B91-B70F-97D92E8568A2} = {8CA21107-76B1-42E1-A425-857F26779AC2}
 		{4569642E-D10E-4C74-81E9-A68378F779BE} = {F9B09B11-DDCB-455F-8D51-4EF581F55514}
+		{C72BD1AC-A987-4772-A786-05174F05B483} = {8CA21107-76B1-42E1-A425-857F26779AC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C27A1805-FEFF-4B0A-B3BA-A20A50722028}
