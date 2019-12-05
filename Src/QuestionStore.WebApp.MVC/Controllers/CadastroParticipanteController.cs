@@ -24,9 +24,7 @@ namespace QuestionStore.WebApp.MVC.Controllers
             return View("CadastroParticipante");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult FormularioContato([Bind("Nome")]CadastroParticipanteModel model)
+        public IActionResult FormularioContato(CadastroParticipanteModel model)
         {
             var validador = new CadastroParticipanteValidador(model);
 

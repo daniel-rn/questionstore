@@ -1,5 +1,7 @@
 ﻿using ControleFamiliar.Mapeadores;
 using QuestionStore.Core.Service;
+using System;
+using System.Linq;
 
 namespace QuestionStore.Core.Mapping
 {
@@ -11,8 +13,9 @@ namespace QuestionStore.Core.Mapping
             using (var transacao = Connection.ObtenhaFbTransaction())
             using (var cmd = Connection.ObtenhaComando())
             {
-                var id = com.Id.ToString().Replace('-', ' ').Trim();
-                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ({id}, {com.Nome});";
+                var id = Guid.NewGuid().ToString().ToCharArray().Take(32);
+                var id2 = string.Concat(id);
+                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ('{id2}', '{com.Nome}');";
 
                 cmd.ExecuteNonQuery();
 
