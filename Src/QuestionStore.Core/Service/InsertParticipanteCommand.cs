@@ -4,9 +4,9 @@ namespace QuestionStore.Core.Service
 {
     public class InsertParticipanteCommand : Command
     {
-        public string Nome { get; set; }
         public int Id { get; set; }
         public int Idade { get; set; }
+        public string Nome { get; set; }
 
         public override bool EhValido()
         {
@@ -19,17 +19,13 @@ namespace QuestionStore.Core.Service
     {
         public InsertParticipanteValidation()
         {
-            //RuleFor(c => c.Id)
-            //   .NotEmpty()
-            //   .WithMessage("Id do cliente inválido");
-
             RuleFor(c => c.Nome)
                .NotEmpty()
-               .WithMessage("O nome do cliente inválido");
+               .WithMessage("O nome do participante inválido");
 
             RuleFor(c => c.Idade)
                .NotEmpty()
-               .WithMessage("Idade do cliente inválido");
+               .WithMessage("Idade do participante inválido");
         }
     }
 }

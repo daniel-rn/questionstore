@@ -24,14 +24,16 @@ namespace QuestionStore.WebApp.MVC.Controllers
             return View("CadastroParticipante");
         }
 
-        public IActionResult FormularioContato(CadastroParticipanteModel model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FormularioContato([Bind("Nome")]CadastroParticipanteModel model)
         {
             var validador = new CadastroParticipanteValidador(model);
 
             var participante = new InsertParticipanteCommand
             {
-                Nome = model.Nome,
                 Id = model.Id,
+                Nome = model.Nome,
                 Idade = model.Idade
             };
 
@@ -40,12 +42,10 @@ namespace QuestionStore.WebApp.MVC.Controllers
             if (!valid)
             {
                 TempData["Erros"] = participante.ValidationResult.Errors.Select(c => c.ErrorMessage).ToArray();
-                return View("Default");
+                return View("Default", model);
             }
 
-            _serviceParticipante.Insert(participante);
-
-            return View();
+            return View("Index");
         }
     }
 

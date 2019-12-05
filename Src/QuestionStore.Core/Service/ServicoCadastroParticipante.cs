@@ -1,7 +1,7 @@
-﻿using QuestionStore.Core.Service;
+﻿using QuestionStore.Domain.Domain;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace QuestionStore.Core.Service
 {
@@ -20,11 +20,23 @@ namespace QuestionStore.Core.Service
         {
             //throw new NotImplementedException(" erro qualquer");
         }
+
+        public async Task<Participante> Consulte()
+        {
+            Thread.Sleep(5000);
+
+            return await Task.Run(() =>
+            {
+                return new Participante() { Nome = "Nasa!" };
+            });
+        }
     }
 
 
     public interface IServiceParticipante : IDisposable
     {
         void Insert(Command command);
+
+        Task<Participante> Consulte();
     }
 }
