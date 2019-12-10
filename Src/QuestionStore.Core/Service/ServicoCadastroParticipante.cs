@@ -14,10 +14,8 @@ namespace QuestionStore.Core.Service
 
         public void Dispose()
         {
-            //throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
-
-        
 
         public async Task<Participante> Consulte()
         {
