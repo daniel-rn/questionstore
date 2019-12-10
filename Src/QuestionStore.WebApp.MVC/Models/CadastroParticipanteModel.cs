@@ -5,8 +5,8 @@ namespace QuestionStore.WebApp.MVC.Models
     public class CadastroParticipanteModel
     {
         public int Id { get; set; }
-        [Required]
-        public string Nome { get; set; } = "seu saraiva";
+
+        public string Nome { get; set; }
 
         public int Idade { get; set; }
 

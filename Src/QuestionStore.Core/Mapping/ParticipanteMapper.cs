@@ -9,18 +9,14 @@ namespace QuestionStore.Core.Mapping
     {
         internal void Insert(Command command)
         {
-            var com = (InsertParticipanteCommand)command;
+            var comando = (InsertParticipanteCommand)command;
             using (var transacao = Connection.ObtenhaFbTransaction())
             using (var cmd = Connection.ObtenhaComando())
             {
-                var id = Guid.NewGuid().ToString().ToCharArray().Take(32);
-                var id2 = string.Concat(id);
-                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ('{id2}', '{com.Nome}');";
-
+                var identificador = Guid.NewGuid().ObtenhaGuid();
+                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ('{identificador}', '{comando.Nome}');";
                 cmd.ExecuteNonQuery();
-
                 transacao.Commit();
-                transacao.Connection.Close();
             }
         }
     }

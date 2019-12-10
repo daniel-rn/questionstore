@@ -3,6 +3,7 @@ using QuestionStore.Core.Service;
 using QuestionStore.WebApp.MVC.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.MVC.Controllers
 {
@@ -17,17 +18,11 @@ namespace QuestionStore.WebApp.MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult Privacy()
-        {
             return View("CadastroParticipante");
         }
 
         public IActionResult FormularioContato(CadastroParticipanteModel model)
         {
-            var validador = new CadastroParticipanteValidador(model);
-
             var participante = new InsertParticipanteCommand
             {
                 Id = model.Id,
@@ -43,9 +38,14 @@ namespace QuestionStore.WebApp.MVC.Controllers
                 return View("Default", model);
             }
 
-            _serviceParticipante.Insert(participante);
+            Task.Run(async () =>
+            {
+                await _serviceParticipante.Insert(participante);
+            });
 
-            return View("Index");
+            Task.WaitAll();
+
+            return View("CadastroParticipante", new CadastroParticipanteModel { Id = 0 });
         }
     }
 
