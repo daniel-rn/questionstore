@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using QuestionStore.Core.Mapping;
 using QuestionStore.Core.Service;
 
 namespace QuestionStore.WebApp.MVC.Setup
@@ -11,6 +12,9 @@ namespace QuestionStore.WebApp.MVC.Setup
             //Questoes
             servicos.AddScoped<IServiceAnswer, ServiceAnswer>();
             servicos.AddScoped<IServiceParticipante, ServicoCadastroParticipante>();
+
+            //Mappers
+            servicos.AddScoped<IMapper, ParticipanteMapper>();
         }
     }
 }

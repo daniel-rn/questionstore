@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace QuestionStore.Core.Mapping
 {
-    public class ParticipanteMapper
+    public class ParticipanteMapper : IMapper
     {
-        internal void Insert(Command command)
+        public void Insert(Command command)
         {
             var comando = (InsertParticipanteCommand)command;
             using (var transacao = Connection.ObtenhaFbTransaction())
@@ -19,5 +19,9 @@ namespace QuestionStore.Core.Mapping
                 transacao.Commit();
             }
         }
+    }
+    public interface IMapper
+    {
+        void Insert(Command command);
     }
 }

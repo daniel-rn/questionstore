@@ -1,15 +1,17 @@
 ﻿using QuestionStore.Core.Mapping;
 using QuestionStore.Domain.Domain;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace QuestionStore.Core.Service
 {
     public class ServicoCadastroParticipante : IServiceParticipante
     {
-        public ServicoCadastroParticipante()
+        private readonly IMapper ParticipanteMapper;
+
+        public ServicoCadastroParticipante(IMapper participanteMapper)
         {
+            ParticipanteMapper = participanteMapper;
         }
 
         public void Dispose()
@@ -29,7 +31,7 @@ namespace QuestionStore.Core.Service
         {
             return await Task.Run(() =>
             {
-                new ParticipanteMapper().Insert(command);
+                ParticipanteMapper.Insert(command);
                 return true;
             });
         }
