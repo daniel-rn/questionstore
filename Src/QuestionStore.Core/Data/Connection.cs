@@ -26,10 +26,7 @@ namespace ControleFamiliar.Mapeadores
 
         private static string ObtenhaConfiguracoesBanco()
         {
-            var configuracoesBanco = "User=SYSDBA;Password=masterkey";
-            configuracoesBanco += ";Database = C:\\Work\\Bases\\QUESTION.FB3";
-            configuracoesBanco += ";Port=3053;Dialect=3;Charset=NONE;Role=;Connection lifetime=0;";
-            configuracoesBanco += "Connection timeout=7;Pooling=True;Packet Size=8192;Server Type=0";
+            var configuracoesBanco = "initial catalog = C:\\Work\\Bases\\QUESTION.FB3; data source = localhost; user id = SYSDBA; password = masterkey; pooling = True; port number = 3053";
             return configuracoesBanco;
         }
 

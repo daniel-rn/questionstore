@@ -5,18 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebirdSql.Data.FirebirdClient" Version="7.1.1" />
     <PackageReference Include="FluentValidation" Version="8.5.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\QuestionStore.Domain\QuestionStore.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="FirebirdSql.Data.FirebirdClient">
-      <HintPath>..\..\..\em\Binarios\FirebirdSql.Data.FirebirdClient.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
