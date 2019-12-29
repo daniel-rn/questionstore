@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Src\QuestionStore.Core\QuestionStore.Core.csproj" />
-    <ProjectReference Include="..\Src\QuestionStore.Domain\QuestionStore.Domain.csproj" />
+    <ProjectReference Include="..\QuestionStore.Core\QuestionStore.Core.csproj" />
   </ItemGroup>
 
 </Project>
