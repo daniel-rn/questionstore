@@ -1,4 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using QuestionStore.Core.Properties;
 using System;
 using System.Data.Common;
 
@@ -26,8 +27,7 @@ namespace ControleFamiliar.Mapeadores
 
         private static string ObtenhaConfiguracoesBanco()
         {
-            var configuracoesBanco = "initial catalog = C:\\Work\\Bases\\QUESTION.FB3; data source = localhost; user id = SYSDBA; password = masterkey; pooling = True; port number = 3053";
-            return configuracoesBanco;
+           return Resources.ConnectionString;
         }
 
         public static FbTransaction ObtenhaFbTransaction()
