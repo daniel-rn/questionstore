@@ -1,4 +1,6 @@
 ﻿using ControleFamiliar.Mapeadores;
+using Microsoft.Extensions.Configuration;
+using QuestionStore.Core.Data;
 using QuestionStore.Core.Service;
 using QuestionStore.Domain.Domain;
 using System;
@@ -6,23 +8,27 @@ using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping
 {
-    public class AnswerMapper
+    public class AnswerMapper : IMapper
     {
-        public AnswerMapper()
+        private readonly IConfiguration Configuration;
+
+        public AnswerMapper(IConfiguration configuration)
         {
+            Configuration = configuration;
         }
 
         public void Insert(InsertAnswerCommand insertAnswer)
         {
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            using (var cmd = Connection.ObtenhaComando())
+            using (var conexao = Connection.Factory.Crie(Configuration))
+            using (var cmd = conexao.ObtenhaComando())
             {
+                var tx = cmd.Transaction;
+
                 var ultimoCodigo = ObtenhaUltimoCodigo();
                 cmd.CommandText = $@"INSERT INTO ANSWER (ANSCODIGO, ANSQSID, ANSLETRA) VALUES ('{ultimoCodigo}', '{insertAnswer.IdQuestion}', '{insertAnswer.IdAnswer}');";
                 cmd.ExecuteNonQuery();
 
-                transacao.Commit();
-                transacao.Connection.Close();
+                tx.Commit();
             }
 
         }
@@ -31,8 +37,8 @@ namespace QuestionStore.Core.Mapping
         {
             var answerList = new List<Answer>();
 
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            using (var cmd = Connection.ObtenhaComando())
+            using (var transacao = Connection_obsoleta.ObtenhaFbTransaction())
+            using (var cmd = Connection_obsoleta.ObtenhaComando())
             {
                 cmd.CommandText = $@"SELECT ANSQSID, ANSLETRA FROM ANSWER";
 
@@ -56,15 +62,18 @@ namespace QuestionStore.Core.Mapping
 
         private int ObtenhaUltimoCodigo()
         {
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            using (var cmd = Connection.ObtenhaComando())
+            using (var transacao = Connection_obsoleta.ObtenhaFbTransaction())
+            using (var cmd = Connection_obsoleta.ObtenhaComando())
             {
                 cmd.CommandText = $@"SELECT MAX(ANSWER.ANSCODIGO) FROM ANSWER";
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        if (dr.IsDBNull(0)) return 1;
+                        if (dr.IsDBNull(0))
+                        {
+                            return 1;
+                        }
 
                         return Convert.ToInt32(dr.GetValue(0)) + 1;
                     }
@@ -75,6 +84,11 @@ namespace QuestionStore.Core.Mapping
             }
 
             return 0;
+        }
+
+        public void Insert(Command command)
+        {
+            throw new NotImplementedException();
         }
     }
 

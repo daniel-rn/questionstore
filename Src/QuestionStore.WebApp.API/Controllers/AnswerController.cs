@@ -10,13 +10,18 @@ namespace QuestionStore.WebApp.API.Controllers
     [ApiController]
     public class AnswerController : ControllerBase
     {
+        private readonly ServiceAnswer serviceAnswer;
+
+        public AnswerController(IServiceAnswer serviceAnswer)
+        {
+            this.serviceAnswer = (ServiceAnswer)serviceAnswer;
+        }
+
         // GET api/answer
         [HttpGet]
         public ActionResult<string> Get()
         {
-            var srv = new ServiceAnswer();
-            List<Answer> answers = srv.GetAllAnswers();
-
+            List<Answer> answers = serviceAnswer.GetAllAnswers();
             return JsonConvert.SerializeObject(answers);
         }
 
@@ -25,7 +30,6 @@ namespace QuestionStore.WebApp.API.Controllers
         public void Post([FromBody] dynamic value)
         {
             var itens = value as Newtonsoft.Json.Linq.JObject;
-            var svc = new ServiceAnswer();
 
             foreach (var item in itens)
             {
@@ -35,7 +39,7 @@ namespace QuestionStore.WebApp.API.Controllers
                     IdAnswer = item.Value.ToString()
                 };
 
-                svc.InsertAnswer(command);
+                serviceAnswer.InsertAnswer(command);
             }
         }
 

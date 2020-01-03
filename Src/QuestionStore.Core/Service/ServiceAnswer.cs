@@ -1,24 +1,26 @@
 ﻿using QuestionStore.Core.Mapping;
 using QuestionStore.Domain.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace QuestionStore.Core.Service
 {
     public class ServiceAnswer : IServiceAnswer
     {
+        private readonly AnswerMapper mapper;
+
+        public ServiceAnswer(IMapper mapper)
+        {
+            this.mapper = (AnswerMapper)mapper;
+        }
+
         public void InsertAnswer(InsertAnswerCommand insertAnswer)
         {
-
-            var map = new AnswerMapper();
-            map.Insert(insertAnswer);
+            mapper.Insert(insertAnswer);
         }
 
         public List<Answer> GetAllAnswers()
         {
-            var map = new AnswerMapper();
-            return map.GetAllAnswers();
+            return mapper.GetAllAnswers();
         }
     }
 

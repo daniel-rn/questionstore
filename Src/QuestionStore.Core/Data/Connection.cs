@@ -1,61 +1,65 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using QuestionStore.Core.Properties;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Data.Common;
 
-namespace ControleFamiliar.Mapeadores
+namespace QuestionStore.Core.Data
 {
-    public static class Connection
+    public sealed class Connection : IConnection, IDisposable
     {
-        public static FbConnection FbCnn { get; private set; }
+        private readonly FbConnection _fbCnn;
+        private FbTransaction FbTxx;
 
-        public static FbTransaction FbTxx { get; private set; }
-
-        public static FbCommandBuilder FbCmm { get; } = new FbCommandBuilder();
-
-        public static bool Active(bool bActive)
+        public Connection(IConfiguration configuracoes)
         {
-            if (bActive)
-            {
-                FbCnn = new FbConnection(ObtenhaConfiguracoesBanco());
-                FbCnn.Open();
-                return true;
-            }
-            FbCnn.Close();
-            return false;
+            var connectionString = configuracoes.GetConnectionString("ConnectionString");
+
+            _fbCnn = new FbConnection(connectionString);
+            _fbCnn.Open();
         }
 
-        private static string ObtenhaConfiguracoesBanco()
+        public FbTransaction ObtenhaFbTransaction()
         {
-           return Resources.ConnectionString;
-        }
-
-        public static FbTransaction ObtenhaFbTransaction()
-        {
-            Active(true);
-            FbTxx = FbCnn.BeginTransaction();
+            FbTxx = _fbCnn.BeginTransaction();
             return FbTxx;
         }
 
-        public static DbCommand ObtenhaComando(string sql)
-        {
-            return new FbCommand(sql, FbCnn);
-        }
-
-        public static DbCommand ObtenhaComando()
+        public DbCommand ObtenhaComando()
         {
             var cmd = new FbCommand
             {
-                Connection = FbCnn,
-                Transaction = FbTxx
+                Connection = _fbCnn,
+                Transaction = FbTxx ?? _fbCnn.BeginTransaction()
             };
 
             return cmd;
         }
 
-        public static void Close()
+        public void Dispose()
         {
-            Active(false);
+            GC.SuppressFinalize(this);
+
+            _fbCnn.Close();
+            _fbCnn.Dispose();
+        }
+
+        public static class Factory
+        {
+            public static Connection Crie(IConfiguration configuration)
+            {
+                return new Connection(configuration);
+            }
         }
     }
+
+    public interface IConnection { }
+
+    internal static class ExtensoesBd
+    {
+        public static void Commit(this DbCommand fbCommand)
+        {
+            fbCommand.Transaction.Commit();
+        }
+    }
+
 }

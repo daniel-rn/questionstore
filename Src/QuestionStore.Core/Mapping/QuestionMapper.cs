@@ -12,8 +12,8 @@ namespace QuestionStore.Core.Mapping
         {
             var questionList = new Dictionary<int, Question>();
 
-            using (var transacao = Connection.ObtenhaFbTransaction())
-            using (var cmd = Connection.ObtenhaComando())
+            using (var transacao = Connection_obsoleta.ObtenhaFbTransaction())
+            using (var cmd = Connection_obsoleta.ObtenhaComando())
             {
                 cmd.CommandText = $@"SELECT * FROM QUESTION
 INNER JOIN ALTERNATIVE ON ALTQSID = QSID";

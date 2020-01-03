@@ -20,17 +20,15 @@ namespace QuestionStore.Core.Mapping
         {
             var comando = (InsertParticipanteCommand)command;
 
-            using (var con = new Connection2(_configuration))
-            using (var transacao = con.ObtenhaFbTransaction())
+            using (var con = Connection.Factory.Crie(_configuration))
             using (var cmd = con.ObtenhaComando())
             {
-                cmd.Transaction = transacao;
-
                 var identificador = Guid.NewGuid().ObtenhaGuid();
+
                 cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ('{identificador}', '{comando.Nome}');";
                 cmd.ExecuteNonQuery();
                 
-                transacao.Commit();
+                cmd.Commit();
             }
         }
     }
