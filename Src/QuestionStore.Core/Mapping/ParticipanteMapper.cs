@@ -1,9 +1,8 @@
-﻿using ControleFamiliar.Mapeadores;
+﻿using Microsoft.Extensions.Configuration;
+using QuestionStore.Core.Data;
 using QuestionStore.Core.Service;
 using System;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
-using QuestionStore.Core.Data;
+using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping
 {
@@ -25,9 +24,11 @@ namespace QuestionStore.Core.Mapping
             {
                 var identificador = Guid.NewGuid().ObtenhaGuid();
 
-                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES ('{identificador}', '{comando.Nome}');";
+                cmd.CommandText = $@"INSERT INTO PARTICIPANTE (PARTCODIGO, PARTNAME) VALUES (@PARTCODIGO, @PARTNAME)";
+                cmd.AddParametersToCommand(new[] { "@PARTCODIGO", "@PARTNAME" });
+                cmd.AddValuesToParameters(new List<object> { identificador, comando.Nome });
                 cmd.ExecuteNonQuery();
-                
+
                 cmd.Commit();
             }
         }
