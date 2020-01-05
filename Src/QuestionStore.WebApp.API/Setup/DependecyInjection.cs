@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using QuestionStore.Core.Data;
+using QuestionStore.Core.Mapping;
 using QuestionStore.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,10 @@ namespace QuestionStore.WebApp.API.Setup
         {
             //Questoes
             servicos.AddScoped<IServiceAnswer, ServiceAnswer>();
+
+            //Mappers
+            servicos.AddScoped<IMapper, AnswerMapper>();
+            servicos.AddScoped<IConnection, Connection>();
         }
     }
 }

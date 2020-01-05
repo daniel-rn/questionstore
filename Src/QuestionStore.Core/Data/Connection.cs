@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Data.Common;
+using System.Linq;
 
 namespace QuestionStore.Core.Data
 {
@@ -10,7 +11,7 @@ namespace QuestionStore.Core.Data
         private readonly FbConnection _fbCnn;
         private FbTransaction FbTxx;
 
-        public Connection(IConfiguration configuracoes)
+        private Connection(IConfiguration configuracoes)
         {
             var connectionString = configuracoes.GetConnectionString("ConnectionString");
 
@@ -49,16 +50,6 @@ namespace QuestionStore.Core.Data
             {
                 return new Connection(configuration);
             }
-        }
-    }
-
-    public interface IConnection { }
-
-    internal static class ExtensoesBd
-    {
-        public static void Commit(this DbCommand fbCommand)
-        {
-            fbCommand.Transaction.Commit();
         }
     }
 

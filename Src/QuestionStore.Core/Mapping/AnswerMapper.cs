@@ -1,5 +1,4 @@
-﻿using ControleFamiliar.Mapeadores;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using QuestionStore.Core.Data;
 using QuestionStore.Core.Service;
 using QuestionStore.Domain.Domain;
@@ -22,13 +21,14 @@ namespace QuestionStore.Core.Mapping
             using (var conexao = Connection.Factory.Crie(Configuration))
             using (var cmd = conexao.ObtenhaComando())
             {
-                var tx = cmd.Transaction;
-
                 var ultimoCodigo = ObtenhaUltimoCodigo();
-                cmd.CommandText = $@"INSERT INTO ANSWER (ANSCODIGO, ANSQSID, ANSLETRA) VALUES ('{ultimoCodigo}', '{insertAnswer.IdQuestion}', '{insertAnswer.IdAnswer}');";
+
+                cmd.CommandText = $@"INSERT INTO ANSWER(ANSCODIGO, ANSQSID, ANSLETRA) VALUES (@ANSCODIGO, @ANSQSID, @ANSLETRA)";
+                cmd.AddParametersToCommand(new[] { "@ANSCODIGO", "@ANSQSID", "@ANSLETRA" });
+                cmd.AddValuesToParameters(new List<object> { ultimoCodigo, insertAnswer.IdQuestion, insertAnswer.IdAnswer });
                 cmd.ExecuteNonQuery();
 
-                tx.Commit();
+                cmd.Commit();
             }
 
         }
@@ -37,8 +37,8 @@ namespace QuestionStore.Core.Mapping
         {
             var answerList = new List<Answer>();
 
-            using (var transacao = Connection_obsoleta.ObtenhaFbTransaction())
-            using (var cmd = Connection_obsoleta.ObtenhaComando())
+            using (var conexao = Connection.Factory.Crie(Configuration))
+            using (var cmd = conexao.ObtenhaComando())
             {
                 cmd.CommandText = $@"SELECT ANSQSID, ANSLETRA FROM ANSWER";
 
@@ -53,8 +53,6 @@ namespace QuestionStore.Core.Mapping
                         });
                     }
                 }
-
-                transacao.Connection.Close();
             }
 
             return answerList;
@@ -62,10 +60,11 @@ namespace QuestionStore.Core.Mapping
 
         private int ObtenhaUltimoCodigo()
         {
-            using (var transacao = Connection_obsoleta.ObtenhaFbTransaction())
-            using (var cmd = Connection_obsoleta.ObtenhaComando())
+            using (var conexao = Connection.Factory.Crie(Configuration))
+            using (var cmd = conexao.ObtenhaComando())
             {
                 cmd.CommandText = $@"SELECT MAX(ANSWER.ANSCODIGO) FROM ANSWER";
+
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
@@ -79,8 +78,6 @@ namespace QuestionStore.Core.Mapping
                     }
 
                 }
-
-                transacao.Connection.Close();
             }
 
             return 0;
