@@ -9,7 +9,9 @@ namespace QuestionStore.Testes.Negocio
     [TestFixture]
     public class DescreveServicoCadastroParticipante
     {
-        [Test(Description = "teste qualquer"), Category("Teste de Mapeadores")]
+        [Test]
+        //[Ignore("fudeu mesmo")] exemplo de skipe teste for NUnit
+        [Category("Teste de Mapeadores")]
         public void Deve_realizar_insercao_de_participante_utilizando_mapeador()
         {
             //Arrange 
