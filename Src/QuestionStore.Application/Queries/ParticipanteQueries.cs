@@ -15,14 +15,15 @@ namespace QuestionStore.Application.Queries
 
         public async Task<ParticipanteViewModel> ObterParticipante(Guid clienteId)
         {
-            var participante = await _serviceParticipante.Consulte();
+            //var participante = await _serviceParticipante.Consulte();
 
-            var participanteModel = new ParticipanteViewModel()
-            {
-                Nome = participante.Nome
-            };
+            //var participanteModel = new ParticipanteViewModel()
+            //{
+            //    Nome = participante.Nome
+            //};
 
-            return participanteModel;
+            //return participanteModel;
+            return null;
         }
     }
 }

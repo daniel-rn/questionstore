@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuestionStore.Core.Service;
 using QuestionStore.WebApp.MVC.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.MVC.Controllers
 {
-    public class CadastroParticipanteController : BaseController
+    public class CadastroParticipanteController : Controller
     {
         private ServicoCadastroParticipante _serviceParticipante;
 
@@ -19,6 +18,15 @@ namespace QuestionStore.WebApp.MVC.Controllers
         public IActionResult Index()
         {
             return View("CadastroParticipante");
+        }
+
+        public async Task<IActionResult> GetParticipantesAsync()
+        {
+            var lista = await _serviceParticipante.Consulte();
+
+            ViewData["lista"] = lista;
+
+            return View("ListagemParticipante");
         }
 
         public IActionResult FormularioContato(CadastroParticipanteModel model)
@@ -46,24 +54,6 @@ namespace QuestionStore.WebApp.MVC.Controllers
             Task.WaitAll();
 
             return View("CadastroParticipante", new CadastroParticipanteModel { Id = 0 });
-        }
-    }
-
-    public abstract class BaseController : Controller
-    {
-        public Command MyProperty;
-
-        public BaseController(Command command)
-        {
-            MyProperty = command;
-        }
-        public BaseController()
-        {
-        }
-
-        protected IEnumerable<string> ObterMensagensErro()
-        {
-            return MyProperty.ValidationResult.Errors.Select(c => c.ErrorMessage).ToArray();
         }
     }
 }

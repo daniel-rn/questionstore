@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Listagem Participantes";
+}
+<h3>
+    @ViewData["Title"]
+</h3>
+<hr />
+
+<div class="container">
+
+    <vc:summary />
+
+    <form asp-action="FormularioContato" asp-anti-forgery="true" method="post"></form>
+
+
+</div>
+
+@{
+var lista =(dynamic) ViewData["lista"];
+foreach (var item in lista)
+{
+    <ul>
+        <li item-checked='false' item-expanded='false'>
+            @item.Nome
+        </li>
+    </ul>
+}
+}

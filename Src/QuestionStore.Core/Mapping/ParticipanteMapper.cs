@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using QuestionStore.Core.Data;
 using QuestionStore.Core.Service;
+using QuestionStore.Domain.Domain;
 using System;
 using System.Collections.Generic;
 
@@ -32,9 +33,22 @@ namespace QuestionStore.Core.Mapping
                 cmd.Commit();
             }
         }
+
+        public List<Participante> Consulte()
+        {
+            using (var con = Connection.Factory.Crie(_configuration))
+            using (var cmd = con.ObtenhaComando())
+            {
+                cmd.CommandText = "select * from PARTICIPANTE";
+
+                
+            }
+        }
     }
     public interface IMapper
     {
         void Insert(Command command);
+
+        
     }
 }
