@@ -15,7 +15,7 @@ namespace QuestionStore.WebApp.MVC.Setup
             servicos.AddScoped<IServiceParticipante, ServicoCadastroParticipante>();
 
             //Mappers
-            servicos.AddScoped<IMapper, ParticipanteMapper>();
+            servicos.AddScoped<IMapperParticipante, ParticipanteMapper>();
             servicos.AddScoped<IConnection, Connection>();
         }
     }

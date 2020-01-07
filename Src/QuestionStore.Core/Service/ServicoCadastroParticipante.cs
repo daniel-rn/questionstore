@@ -2,17 +2,18 @@
 using QuestionStore.Domain.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuestionStore.Core.Service
 {
     public class ServicoCadastroParticipante : IServiceParticipante
     {
-        private readonly IMapper ParticipanteMapper;
+        private readonly ParticipanteMapper ParticipanteMapper;
 
-        public ServicoCadastroParticipante(IMapper participanteMapper)
+        public ServicoCadastroParticipante(IMapperParticipante participanteMapper)
         {
-            ParticipanteMapper = participanteMapper;
+            ParticipanteMapper = (ParticipanteMapper)participanteMapper;
         }
 
         public void Dispose()
@@ -22,15 +23,11 @@ namespace QuestionStore.Core.Service
 
         public async Task<List<Participante>> Consulte()
         {
-            //return await Task.Run(() =>
-            //{
-            //    var list = new List<Participante>() { new Participante() { Nome = "Nasa!" } , new Participante() { Nome = "CIA" } };
-            //    return list;
-            //});
-
             return await Task.Run(() =>
             {
-                ParticipanteMapper.Insert
+                return ParticipanteMapper
+                .Consulte()
+                .ToList();
             });
         }
 
@@ -43,7 +40,6 @@ namespace QuestionStore.Core.Service
             });
         }
     }
-
 
     public interface IServiceParticipante : IDisposable
     {

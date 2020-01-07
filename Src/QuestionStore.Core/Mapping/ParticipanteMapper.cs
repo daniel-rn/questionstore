@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping
 {
-    public class ParticipanteMapper : IMapper
+    public class ParticipanteMapper : IMapperParticipante
     {
         private readonly IConfiguration _configuration;
 
@@ -34,21 +34,32 @@ namespace QuestionStore.Core.Mapping
             }
         }
 
-        public List<Participante> Consulte()
+        public IEnumerable<Participante> Consulte()
         {
+            var participantes = new List<Participante>();
+
             using (var con = Connection.Factory.Crie(_configuration))
             using (var cmd = con.ObtenhaComando())
             {
-                cmd.CommandText = "select * from PARTICIPANTE";
+                cmd.CommandText = "SELECT PARTNAME FROM PARTICIPANTE";
 
-                
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        participantes.Add(new Participante { Nome = dr.GetString(0) });
+                    }
+                }
+
             }
+
+            return participantes;
         }
     }
-    public interface IMapper
-    {
-        void Insert(Command command);
 
-        
+    public interface IMapperParticipante : IMapper
+    {
+        IEnumerable<Participante> Consulte();
     }
+
 }

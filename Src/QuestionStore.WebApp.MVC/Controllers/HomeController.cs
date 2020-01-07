@@ -14,10 +14,6 @@ namespace QuestionStore.WebApp.MVC.Controllers
     {
         public IActionResult Index()
         {
-            var sv = new ServicoCadastroQuestao();
-
-            sv.Obtenha();
-
             return View();
         }
 

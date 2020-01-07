@@ -9,9 +9,7 @@ namespace QuestionStore.Core.Processos
         public List<Question> Obtenha()
         {
             var map = new QuestionMapper();
-            //var q = map.Obtenha();
-
-            return null;
+            return map.Obtenha();
         }
     }
 }

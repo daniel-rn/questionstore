@@ -14,11 +14,15 @@ namespace QuestionStore.WebApp.API.Setup
 
         public static void RegistreServicos(this IServiceCollection servicos)
         {
-            //Questoes
+            //Services
             servicos.AddScoped<IServiceAnswer, ServiceAnswer>();
+            servicos.AddScoped<IServiceParticipante, ServicoCadastroParticipante>();
 
             //Mappers
             servicos.AddScoped<IMapper, AnswerMapper>();
+            servicos.AddScoped<IMapperParticipante, ParticipanteMapper>();
+
+            //Connection
             servicos.AddScoped<IConnection, Connection>();
         }
     }
