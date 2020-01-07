@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QuestionStore.Core.Service;
+using QuestionStore.WebApp.API.Models;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
@@ -29,6 +30,18 @@ namespace QuestionStore.WebApp.API.Controllers
             }).Result;
 
             return JsonConvert.SerializeObject(participantes);
+        }
+
+        // POST api/participante
+        [HttpPost]
+        public void Post([FromBody] CadastroParticipanteModel model)
+        {
+            var insertCommand = new InsertParticipanteCommand()
+            {
+                Nome = model.Nome
+            };
+
+            serviceParticipante.Insert(insertCommand);
         }
     }
 }
