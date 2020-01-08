@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System;
 
 namespace QuestionStore.Core.Service
 {
@@ -7,6 +8,7 @@ namespace QuestionStore.Core.Service
         public int Id { get; set; }
         public int Idade { get; set; }
         public string Nome { get; set; }
+        public string Cpf { get; set; }
 
         public override bool EhValido()
         {
@@ -21,11 +23,15 @@ namespace QuestionStore.Core.Service
         {
             RuleFor(c => c.Nome)
                .NotEmpty()
-               .WithMessage("O nome do participante inválido");
+               .WithMessage("O nome do participante deve ser informado.");
 
             RuleFor(c => c.Idade)
                .NotEmpty()
-               .WithMessage("Idade do participante inválido");
+               .WithMessage("A Idade do participante deve ser informada.");
+
+            RuleFor(c => c.Cpf)
+               .NotEmpty()
+               .WithMessage("Cpf do participante não deve ser vazio.");
         }
     }
 }

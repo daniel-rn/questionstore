@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QuestionStore.Core.Service;
 using QuestionStore.WebApp.API.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
@@ -34,14 +32,37 @@ namespace QuestionStore.WebApp.API.Controllers
 
         // POST api/participante
         [HttpPost]
-        public void Post([FromBody] CadastroParticipanteModel model)
+        public ActionResult<string> Post([FromBody] CadastroParticipanteModel model)
         {
             var insertCommand = new InsertParticipanteCommand()
             {
-                Nome = model.Nome
+                Nome = model.Nome,
+                Idade = model.Idade,
+                Cpf = model.CPF
             };
 
-            serviceParticipante.Insert(insertCommand);
+            if (insertCommand.EhValido())
+            {
+                serviceParticipante.Insert(insertCommand);
+                return Ok();
+            }
+
+            return JsonConvert.SerializeObject(new Error(insertCommand));
         }
     }
+
+    public class Error
+    {
+        //pensar em algo melhor 
+        private readonly Command command;
+
+        public Error(Command command)
+        {
+            this.command = command;
+            Erros = command.ValidationResult.Errors.Select(c => c.ErrorMessage).ToList();
+        }
+
+        public List<string> Erros { get; }
+    }
+
 }
