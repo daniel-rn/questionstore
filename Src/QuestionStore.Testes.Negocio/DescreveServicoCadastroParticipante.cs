@@ -15,7 +15,7 @@ namespace QuestionStore.Testes.Negocio
         public void Deve_realizar_insercao_de_participante_utilizando_mapeador()
         {
             //Arrange 
-            var map = new Mock<IMapper>();
+            var map = new Mock<IMapperParticipante>();
             var srv = new ServicoCadastroParticipante(map.Object);
 
             var command = new InsertParticipanteCommand()

@@ -35,7 +35,8 @@ namespace QuestionStore.WebApp.MVC.Controllers
             {
                 Id = model.Id,
                 Nome = model.Nome,
-                Idade = model.Idade
+                Idade = model.Idade,
+                Cpf = model.CPF
             };
 
             var valid = participante.EhValido();
