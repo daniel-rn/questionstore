@@ -39,7 +39,7 @@ namespace QuestionStore.Core.Data
         {
             GC.SuppressFinalize(this);
 
-            FbTxx.Rollback();
+            FbTxx?.Rollback();
             _fbCnn.Close();
             _fbCnn.Dispose();
         }
