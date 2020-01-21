@@ -9,11 +9,11 @@ namespace QuestionStore.Core.Service
 {
     public class ServicoCadastroParticipante : IServiceParticipante
     {
-        private readonly ParticipanteMapper ParticipanteMapper;
+        private readonly IMapperParticipante ParticipanteMapper;
 
         public ServicoCadastroParticipante(IMapperParticipante participanteMapper)
         {
-            ParticipanteMapper = (ParticipanteMapper)participanteMapper;
+            ParticipanteMapper = participanteMapper;
         }
 
         public void Dispose()

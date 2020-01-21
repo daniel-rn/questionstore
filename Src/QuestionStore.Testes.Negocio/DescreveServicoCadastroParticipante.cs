@@ -1,4 +1,5 @@
 ﻿using Moq;
+using Moq.AutoMock;
 using NUnit.Framework;
 using QuestionStore.Core.Mapping;
 using QuestionStore.Core.Service;
