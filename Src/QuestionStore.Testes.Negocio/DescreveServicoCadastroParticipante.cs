@@ -11,7 +11,6 @@ namespace QuestionStore.Testes.Negocio
     public class DescreveServicoCadastroParticipante
     {
         [Test]
-        //[Ignore("fudeu mesmo")] exemplo de skipe teste for NUnit
         [Category("Teste de Mapeadores")]
         public void Deve_realizar_insercao_de_participante_utilizando_mapeador()
         {
@@ -35,6 +34,13 @@ namespace QuestionStore.Testes.Negocio
 
             //Assert
             map.Verify(m => m.Insert(command), Times.Once);
+        }
+
+        [Test]
+        [Ignore("Exemplo de skipe teste for NUnit")] 
+        public void Deve_ser_ignorado()
+        {
+            Assert.Pass();
         }
     }
 }
