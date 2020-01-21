@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Data.Common;
-using System.Linq;
 
 namespace QuestionStore.Core.Data
 {
@@ -40,6 +39,7 @@ namespace QuestionStore.Core.Data
         {
             GC.SuppressFinalize(this);
 
+            FbTxx.Rollback();
             _fbCnn.Close();
             _fbCnn.Dispose();
         }
