@@ -32,9 +32,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Testes", "5 - Testes", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.Testes.Negocio", "Src\QuestionStore.Testes.Negocio\QuestionStore.Testes.Negocio.csproj", "{44BADA09-A902-463B-8138-660B16F10C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionStore.Application", "Src\QuestionStore.Application\QuestionStore.Application.csproj", "{A4C19523-25EB-4A80-A64D-D70A1E1E7B11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestionStore.Application", "Src\QuestionStore.Application\QuestionStore.Application.csproj", "{A4C19523-25EB-4A80-A64D-D70A1E1E7B11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSource", "Src\EventSource\EventSource.csproj", "{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSource", "Src\EventSource\EventSource.csproj", "{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestioStore.WebApp.Tests", "Src\QuestioStore.WebApp.Tests\QuestioStore.WebApp.Tests.csproj", "{A55F8E61-D810-42EB-A711-7092959D6152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55F8E61-D810-42EB-A711-7092959D6152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55F8E61-D810-42EB-A711-7092959D6152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55F8E61-D810-42EB-A711-7092959D6152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55F8E61-D810-42EB-A711-7092959D6152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{44BADA09-A902-463B-8138-660B16F10C91} = {FA6D1C03-E904-46C4-8A65-9DDEF6A92DA3}
 		{A4C19523-25EB-4A80-A64D-D70A1E1E7B11} = {8CA21107-76B1-42E1-A425-857F26779AC2}
 		{DCBB32B8-B7D4-409A-99F8-3104E06EF2BD} = {6DC06E78-DF94-4E38-8331-678D6663346D}
+		{A55F8E61-D810-42EB-A711-7092959D6152} = {FA6D1C03-E904-46C4-8A65-9DDEF6A92DA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C27A1805-FEFF-4B0A-B3BA-A20A50722028}

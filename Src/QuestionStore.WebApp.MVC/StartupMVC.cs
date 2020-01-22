@@ -12,9 +12,9 @@ using QuestionStore.WebApp.MVC.Setup;
 
 namespace QuestionStore.WebApp.MVC
 {
-    public class Startup
+    public class StartupMVC
     {
-        public Startup(IConfiguration configuration)
+        public StartupMVC(IConfiguration configuration)
         {
             Configuration = configuration;
         }

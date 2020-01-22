@@ -20,6 +20,6 @@ namespace QuestionStore.WebApp.API
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseUrls("http://0.0.0.0:5000")
-            .UseStartup<Startup>();
+            .UseStartup<StartupAPI>();
     }
 }

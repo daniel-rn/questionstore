@@ -7,9 +7,9 @@ using QuestionStore.WebApp.API.Setup;
 
 namespace QuestionStore.WebApp.API
 {
-    public class Startup
+    public class StartupAPI
     {
-        public Startup(IConfiguration configuration)
+        public StartupAPI(IConfiguration configuration)
         {
             Configuration = configuration;
         }
