@@ -25,14 +25,17 @@ namespace QuestioStore.WebApp.Tests
             var initialResponse = await _testsFixture.Client.GetAsync("/CadastroParticipante");
             initialResponse.EnsureSuccessStatusCode();
 
+            var antiForgeryToken = _testsFixture.ObterAntiForgeryToken(await initialResponse.Content.ReadAsStringAsync());
+
             var formData = new Dictionary<string, string>
             {
                 {"Nome", "Macelé Goiano"},
                 {"Idade", "24" },
-                {"CPF","01234567890"}
+                {"CPF","01234567890"},
+                { _testsFixture.AntiForgeryFieldName, antiForgeryToken}
             };
 
-            var postRequest = new HttpRequestMessage(HttpMethod.Post, "/CadastroParticipante")
+            var postRequest = new HttpRequestMessage(HttpMethod.Post, "/CadastroParticipante/FormularioContato")
             {
                 Content = new FormUrlEncodedContent(formData)
             };
@@ -40,6 +43,8 @@ namespace QuestioStore.WebApp.Tests
             // Act
             var postResponse = await _testsFixture.Client.SendAsync(postRequest);
             postResponse.EnsureSuccessStatusCode();
+
+            var responseString = await postResponse.Content.ReadAsStringAsync();
         }
     }
 }
