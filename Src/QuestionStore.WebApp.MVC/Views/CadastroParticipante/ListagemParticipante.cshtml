@@ -11,13 +11,40 @@
 </div>
 
 @{
-var lista =(dynamic) ViewData["lista"];
-foreach (var item in lista)
-{
-    <ul>
-        <li item-checked='false' item-expanded='false'>
-            @item.Nome
-        </li>
-    </ul>
+    var lista = (dynamic)ViewData["lista"];
+    foreach (var item in lista)
+    {
+        <div class="row">
+            <div class="column" style="background-color:#ECF4ED;">
+                <h2>Nome</h2>
+                <p>@item.Nome</p>
+            </div>
+            <div class="column" style="background-color:#ECF4ED;">
+                <h2>Idade</h2>
+                <p>@item.Idade</p>
+            </div>
+            <div class="column" style="background-color:#ECF4Ed;">
+                <h2>Cpf</h2>
+                <p>@item.CpfCnpj</p>
+            </div>
+        </div>
+    }
 }
-}
+
+<style>
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 25%;
+        height: 10%;
+        padding: 2px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
