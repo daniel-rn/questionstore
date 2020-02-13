@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using QuestionStore.Core.Commands;
 using QuestionStore.Core.Data;
 using QuestionStore.Core.Service;
 using QuestionStore.Domain.Domain;
@@ -16,7 +17,7 @@ namespace QuestionStore.Core.Mapping
             Configuration = configuration;
         }
 
-        public void Insert(InsertAnswerCommand insertAnswer)
+        public void Insert(InsertAnswerCommand insertAnswer) 
         {
             using (var conexao = Connection.Factory.Crie(Configuration))
             using (var cmd = conexao.ObtenhaComando())
@@ -88,5 +89,4 @@ namespace QuestionStore.Core.Mapping
             throw new NotImplementedException();
         }
     }
-
 }

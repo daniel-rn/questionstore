@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace QuestionStore.Core.Service
+namespace QuestionStore.Core.Commands
 {
     public class InsertQuestionCommand : Command
     {

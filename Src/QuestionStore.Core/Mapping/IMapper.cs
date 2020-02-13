@@ -1,4 +1,5 @@
-﻿using QuestionStore.Core.Service;
+﻿using QuestionStore.Core.Commands;
+using QuestionStore.Core.Service;
 using System.Collections.Generic;
 
 namespace QuestionStore.Core.Mapping

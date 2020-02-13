@@ -1,4 +1,4 @@
-﻿namespace QuestionStore.Core.Service
+﻿namespace QuestionStore.Core.Commands
 {
     public class InsertAnswerCommand
     {

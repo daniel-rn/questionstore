@@ -2,7 +2,7 @@
 using System;
 using MediatR;
 
-namespace QuestionStore.Core.Service
+namespace QuestionStore.Core.Commands
 {
     public abstract class Command : IRequest<bool>
     {

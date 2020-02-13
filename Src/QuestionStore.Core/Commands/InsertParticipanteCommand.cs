@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System;
 
-namespace QuestionStore.Core.Service
+namespace QuestionStore.Core.Commands
 {
     public class InsertParticipanteCommand : Command
     {
