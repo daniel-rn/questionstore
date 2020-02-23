@@ -26,9 +26,9 @@ namespace QuestionStore.WebApp.API.Controllers
             var participantes = Task.Run(async () =>
             {
                 return await serviceParticipante.Consulte();
-            }).Result;
+            });
 
-            return JsonConvert.SerializeObject(participantes);
+            return JsonConvert.SerializeObject(participantes.Result);
         }
 
         // POST api/participante
