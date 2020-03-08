@@ -32,6 +32,11 @@ namespace QuestionStore.WebApp.MVC.Controllers
 
         public IActionResult FormularioContato(CadastroParticipanteModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("CadastroParticipante", model);
+            }
+
             var participante = new InsertParticipanteCommand
             {
                 Id = model.Id,

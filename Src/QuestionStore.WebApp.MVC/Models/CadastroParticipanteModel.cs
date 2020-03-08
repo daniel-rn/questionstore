@@ -1,9 +1,12 @@
-﻿namespace QuestionStore.WebApp.MVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace QuestionStore.WebApp.MVC.Models
 {
     public class CadastroParticipanteModel
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "O Campo Nome deve ser informado")]
         public string Nome { get; set; }
 
         public int Idade { get; set; }
