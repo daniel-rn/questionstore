@@ -1,0 +1,29 @@
+version: '3'
+
+networks: 
+  dockersql-network:
+    driver: bridge
+    
+services:
+  dockersql.application.webapi:
+    container_name: dockersql.application.webapi
+    image: question-store
+    build:
+      context: .
+      dockerfile: Src/QuestionStore.WebApp.MVC/Dockerfile
+    ports:
+      - "20000:80"
+    networks:
+      - dockersql-network
+    depends_on:
+      - db.database
+  db.database:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=app_development
+
+      
+
