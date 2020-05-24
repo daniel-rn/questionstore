@@ -18,13 +18,18 @@
       }
     },
     "QuestionStore.WebApp.API": {
-        "commandName": "Project",
-        "launchBrowser": false,
-        "launchUrl": "api/question",
-        "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-        },
-        "applicationUrl": "http://localhost:5000"
+      "commandName": "Project",
+      "launchUrl": "api/question",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
+      "publishAllPorts": true
     }
   }
 }
