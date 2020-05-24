@@ -43,6 +43,10 @@ services:
       - MYSQL_DATABASE=app_development
   fb.database:
     container_name: firebird
-    image: jacobalberty/firebird
+    image: jacobalberty/firebird:3.0.4
     ports:
       - "3050:3050"
+    environment:
+      - ISC_PASSWORD=masterkey
+      
+    
