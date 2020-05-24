@@ -5,25 +5,44 @@ networks:
     driver: bridge
     
 services:
-  dockersql.application.webapi:
-    container_name: dockersql.application.webapi
-    image: question-store
+  webApp.MVC:
+    container_name: webApp.MVC
+    image: question-store-mvc
     build:
       context: .
-      dockerfile: Src/QuestionStore.WebApp.MVC/Dockerfile
+      dockerfile: Src/QuestionStore.WebApp.MVC/Dockerfile  
+    environment:
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "20000:80"
+      - "5055:80"
+    networks:
+      - dockersql-network
+    depends_on:
+      - db.database
+  webApp.API:
+    container_name: webApp.API
+    image: question-store-api
+    build:
+      context: .
+      dockerfile: Src/QuestionStore.WebApp.API/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
     networks:
       - dockersql-network
     depends_on:
       - db.database
   db.database:
+    container_name: mysql
     image: mysql:5.6
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=app_development
-
-      
-
+  fb.database:
+    container_name: firebird
+    image: jacobalberty/firebird
+    ports:
+      - "3050:3050"
