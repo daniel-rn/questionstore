@@ -18,19 +18,22 @@ namespace QuestionStore.WebApp.API.Controllers
             var servico = new ServicoCadastroQuestao();
             var questao = servico.Obtenha();
 
-            return JsonConvert.SerializeObject(questao);
+            return Ok(questao);
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> PostAsync([FromBody] QuestionModel model)
+        public async Task<ActionResult> PostAsync([FromBody] QuestionModel model)
         {
             var insertCommand = new InsertQuestionCommand() { Descricao = model.Descricao };
-
             var servico = new ServicoCadastroQuestao();
 
-            await servico.Insert(insertCommand);
+            if (insertCommand.EhValido())
+            {
+                await servico.Insert(insertCommand);
+                return Ok();
+            }
 
-            return JsonConvert.SerializeObject(new Error(insertCommand));
+            return BadRequest(new Error(insertCommand));
         }
     }
 }

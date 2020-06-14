@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using QuestionStore.Core.Commands;
 using QuestionStore.Core.Service;
+using QuestionStore.Domain.Domain;
 using QuestionStore.WebApp.API.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,10 @@ namespace QuestionStore.WebApp.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<string> Get()
+        public async Task<ActionResult<List<Participante>>> Get()
         {
-            var participantes = Task.Run(async () =>
-            {
-                return await serviceParticipante.Consulte();
-            });
-
-            return JsonConvert.SerializeObject(participantes.Result);
+            var participantes = await serviceParticipante.Consulte();
+            return Ok(participantes);
         }
 
         // POST api/participante
@@ -48,18 +45,18 @@ namespace QuestionStore.WebApp.API.Controllers
                 return Ok();
             }
 
-            return JsonConvert.SerializeObject(new Error(insertCommand));
+            return BadRequest(new Error(insertCommand));
         }
     }
 
     public class Error
     {
         //pensar em algo melhor 
-        private readonly Command command;
+        private readonly Command _command;
 
         public Error(Command command)
         {
-            this.command = command;
+            this._command = command;
             Erros = command.ValidationResult.Errors.Select(c => c.ErrorMessage).ToList();
         }
 

@@ -22,8 +22,7 @@ namespace QuestionStore.WebApp.API.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            List<Answer> answers = serviceAnswer.GetAllAnswers();
-            return JsonConvert.SerializeObject(answers);
+            return Ok(serviceAnswer.GetAllAnswers());
         }
 
         // POST api/answer
