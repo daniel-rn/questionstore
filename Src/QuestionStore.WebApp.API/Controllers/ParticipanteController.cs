@@ -1,18 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using QuestionStore.Core.Commands;
 using QuestionStore.Core.Service;
 using QuestionStore.Domain.Domain;
 using QuestionStore.WebApp.API.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParticipanteController : ControllerBase
+    public class ParticipanteController : MainController
     {
         private readonly IServiceParticipante serviceParticipante;
 
@@ -25,12 +23,12 @@ namespace QuestionStore.WebApp.API.Controllers
         public async Task<ActionResult<List<Participante>>> Get()
         {
             var participantes = await serviceParticipante.Consulte();
-            return Ok(participantes);
+            return CustomResponse(participantes);
         }
 
         // POST api/participante
         [HttpPost]
-        public ActionResult<string> Post([FromBody] CadastroParticipanteModel model)
+        public ActionResult<string> Post([FromBody] ParticipanteModel model)
         {
             var insertCommand = new InsertParticipanteCommand()
             {
@@ -42,25 +40,11 @@ namespace QuestionStore.WebApp.API.Controllers
             if (insertCommand.EhValido())
             {
                 serviceParticipante.Insert(insertCommand);
-                return Ok();
+                return CustomResponse(model);
             }
 
-            return BadRequest(new Error(insertCommand));
+            return CustomResponse(insertCommand);
         }
-    }
-
-    public class Error
-    {
-        //pensar em algo melhor 
-        private readonly Command _command;
-
-        public Error(Command command)
-        {
-            this._command = command;
-            Erros = command.ValidationResult.Errors.Select(c => c.ErrorMessage).ToList();
-        }
-
-        public List<string> Erros { get; }
     }
 
 }
