@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuestionStore.Core.Commands;
 using QuestionStore.Core.Processos;
 using QuestionStore.WebApp.API.Models;
@@ -6,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
-    public class QuestionController : ControllerBase
+    [Route("api/[controller]")]
+    public class QuestionController : MainController
     {
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<string> Get()
         {
             var servico = new ServicoCadastroQuestao();
             var questao = servico.Obtenha();
 
-            return Ok(questao);
+            return CustomResponse(questao);
         }
 
         [HttpPost]
@@ -28,10 +31,10 @@ namespace QuestionStore.WebApp.API.Controllers
             if (insertCommand.EhValido())
             {
                 await servico.Insert(insertCommand);
-                return Ok();
+                return CustomResponse(model);
             }
 
-            return BadRequest(new Result(insertCommand));
+            return CustomResponse(insertCommand);
         }
     }
 }
