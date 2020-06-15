@@ -1,36 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuestionStore.Core.Commands;
 using QuestionStore.Core.Processos;
-using QuestionStore.Core.Service;
 using QuestionStore.WebApp.API.Models;
 using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
-    public class QuestionController : ControllerBase
+    [Route("api/[controller]")]
+    public class QuestionController : MainController
     {
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult<string> Get()
         {
             var servico = new ServicoCadastroQuestao();
             var questao = servico.Obtenha();
 
-            return JsonConvert.SerializeObject(questao);
+            return CustomResponse(questao);
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> PostAsync([FromBody] QuestionModel model)
+        public async Task<ActionResult> PostAsync([FromBody] QuestionModel model)
         {
             var insertCommand = new InsertQuestionCommand() { Descricao = model.Descricao };
-
             var servico = new ServicoCadastroQuestao();
 
-            await servico.Insert(insertCommand);
+            if (insertCommand.EhValido())
+            {
+                await servico.Insert(insertCommand);
+                return CustomResponse(model);
+            }
 
-            return JsonConvert.SerializeObject(new Error(insertCommand));
+            return CustomResponse(insertCommand);
         }
     }
 }

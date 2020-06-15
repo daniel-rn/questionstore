@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using System;
 using MediatR;
+using System.Collections.Generic;
 
 namespace QuestionStore.Core.Commands
 {
@@ -8,6 +9,8 @@ namespace QuestionStore.Core.Commands
     {
         public DateTime Timestamp { get; private set; }
         public ValidationResult ValidationResult { get; set; }
+
+        public IList<ValidationFailure> Errors => ValidationResult.Errors;
 
         protected Command()
         {

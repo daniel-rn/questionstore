@@ -2,10 +2,6 @@
 using QuestionStore.Core.Data;
 using QuestionStore.Core.Mapping;
 using QuestionStore.Core.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace QuestionStore.WebApp.API.Setup
 {

@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using QuestionStore.Core.Commands;
 using QuestionStore.Core.Service;
-using QuestionStore.Domain.Domain;
-using System.Collections.Generic;
 
 namespace QuestionStore.WebApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnswerController : ControllerBase
+    public class AnswerController : MainController
     {
         private readonly ServiceAnswer serviceAnswer;
 
@@ -22,13 +19,12 @@ namespace QuestionStore.WebApp.API.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            List<Answer> answers = serviceAnswer.GetAllAnswers();
-            return JsonConvert.SerializeObject(answers);
+            return CustomResponse(serviceAnswer.GetAllAnswers());
         }
 
         // POST api/answer
         [HttpPost]
-        public void Post([FromBody] dynamic value)
+        public ActionResult Post([FromBody] dynamic value)
         {
             var itens = value as Newtonsoft.Json.Linq.JObject;
 
@@ -42,6 +38,8 @@ namespace QuestionStore.WebApp.API.Controllers
 
                 serviceAnswer.InsertAnswer(command);
             }
+
+            return CustomResponse();
         }
 
     }

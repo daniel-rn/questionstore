@@ -1,6 +1,6 @@
 ﻿namespace QuestionStore.WebApp.API.Models
 {
-    public class CadastroParticipanteModel
+    public class ParticipanteModel
     {
         public int Id { get; set; }
 
