@@ -12,7 +12,6 @@ namespace QuestionStore.WebApp.API.Controllers
     [Route("api/[controller]")]
     public class QuestionController : MainController
     {
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult<string> Get()
         {
